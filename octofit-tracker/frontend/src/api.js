@@ -11,8 +11,8 @@ export function responseItems(payload) {
   return []
 }
 
-export async function fetchCollection(component) {
-  const response = await fetch(`${API_BASE_URL}/${component}/`)
+export async function fetchCollection(component, endpoint = `${API_BASE_URL}/${component}/`) {
+  const response = await fetch(endpoint)
   if (!response.ok) throw new Error(`Unable to load ${component}`)
   return responseItems(await response.json())
 }
